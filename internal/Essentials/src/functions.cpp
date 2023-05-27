@@ -314,6 +314,45 @@ unsigned int create_simplex() {
     return VAO;
 }
 
+unsigned int create_mesh_colored(float *vertices, float *colors, unsigned int numvertices, unsigned int *triangles, unsigned int numTriangles) {
+    float *nvertices = new float[numvertices * 2];
+    for (int i = 0; i < numvertices; i++) {
+        nvertices[i] = vertices[i];
+    }
+    for (int i = 0; i < numvertices; i++) {
+        nvertices[i + numvertices] = colors[i];
+    }
+
+    unsigned int EBO;
+    glGenBuffers(1, &EBO);
+
+    unsigned int VBO;
+    glGenBuffers(1, &VBO);
+
+    unsigned int VAO;
+    glGenVertexArrays(1, &VAO);
+
+    glBindVertexArray(VAO);
+    // 2. copy our vertices array in a vertex buffer for OpenGL to use
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, 2 * numvertices * sizeof(float), nvertices, GL_STATIC_DRAW);
+    // 3. copy our index array in a element buffer for OpenGL to use
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, numTriangles, triangles, GL_STATIC_DRAW);
+    // 4. then set the vertex attributes pointers
+    // glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+    // glEnableVertexAttribArray(0);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)(numvertices * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    return VAO;
+}
+
 unsigned int create_cube() {
     unsigned int indices[36];
     unsigned int mapping[] = {0, 1, 2, 2, 3, 0};

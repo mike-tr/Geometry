@@ -76,7 +76,7 @@ void Camera::updateYawAndPitch() {
     this->forwardAxis.y = sin(pitch);
     this->forwardAxis.z = sin(yaw) * cos(pitch);
 
-    std::cout << this->pitch << " ," << this->yaw << std::endl;
+    // std::cout << this->pitch << " ," << this->yaw << std::endl;
 
     // std::cout << "pitch : " << this->pitch << " inversed : " << asin(this->forwardAxis.y) << std::endl;
 
@@ -150,7 +150,7 @@ void Camera::localTranslate(glm::vec3 translate) {
 
     translate = glm::inverse(this->rollMatrix) * translate;
     this->position += translate.x * this->right() + translate.y * this->up() + translate.z * this->forward();
-    std::cout << this->position << std::endl;
+    // std::cout << this->position << std::endl;
     this->recalculate();
 }
 

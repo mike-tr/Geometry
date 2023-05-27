@@ -4,9 +4,9 @@
 #include "component.hpp"
 // #include "engine.hpp"
 #include "material.hpp"
-//#include "node.hpp"
-//#include "cameraNode.hpp"
-//#include "transformNode.hpp"
+// #include "node.hpp"
+// #include "cameraNode.hpp"
+// #include "transformNode.hpp"
 
 namespace Engine {
 class Engine;
@@ -29,6 +29,7 @@ public:
     ~MeshRenderer();
     Material &getMaterial();
     void update() override;
+    void setMesh(unsigned int model, unsigned int numVertices, bool indexed);
 };
 } // namespace Components
 } // namespace Engine

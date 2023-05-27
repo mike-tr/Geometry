@@ -17,6 +17,8 @@ unsigned int load_shaders();
 unsigned int create_cube();
 unsigned int create_simplex();
 unsigned int create_cube_bad();
+unsigned int create_mesh_colored(float *vertices, float *colors, unsigned int numvertices, unsigned int *triangles, unsigned int numTriangles);
+
 void processInput(GLFWwindow *window);
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
 unsigned int create_texture(const char *imagePath);

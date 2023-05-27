@@ -3,7 +3,7 @@ project(openGLLearning VERSION 1.0)
 
 # Generate a config.h file with some settings like DEBUG etc...
 configure_file(config.h.in config.h)
-add_executable(${PROJECT_NAME} src/main.cpp src/propertyTest.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/convexHull3D.cpp src/propertyTest.cpp)
 # add_library(${PROJECT_NAME} src/functions.cpp)
 
 # file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/assets/shaders)

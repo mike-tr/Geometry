@@ -4,11 +4,17 @@
 #include "functions.hpp"
 // #include "functions.hpp"
 #include "Node/node.hpp"
-//#include "transformNode.hpp"
+// #include "transformNode.hpp"
 
 namespace Engine {
 namespace Components {
 MeshRenderer::MeshRenderer(Node::Node &parent, unsigned int model, unsigned int numVertices, bool indexed, const Material &material) : material(material), Componenet(&parent) {
+    this->object = model;
+    this->numVertices = numVertices;
+    this->indexed = indexed;
+}
+
+void MeshRenderer::setMesh(unsigned int model, unsigned int numVertices, bool indexed) {
     this->object = model;
     this->numVertices = numVertices;
     this->indexed = indexed;
